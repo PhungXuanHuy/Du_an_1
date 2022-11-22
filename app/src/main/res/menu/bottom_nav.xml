@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/itHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/itXepHang"
+        android:title="Xếp Hạng"
+        android:icon="@drawable/ic_xephang"/>
+
+    <item android:id="@+id/itToi"
+        android:title="Tôi"
+        android:icon="@drawable/ic_toi"/>
+</menu>
