@@ -3,9 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/01.THUC_HANH/DU_AN_1/app/src/main/res/drawable/shape_dangnhap.xml" value="0.2005" />
-        <entry key="..\:/01.THUC_HANH/DU_AN_1/app/src/main/res/layout/activity_manhinhdangky.xml" value="0.2359375" />
-        <entry key="..\:/01.THUC_HANH/DU_AN_1/app/src/main/res/layout/activity_manhinhdangnhap.xml" value="0.25" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/ic_home.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/ic_toi.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/ic_trolai.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/ic_xephang.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/shape_btndangnhap.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/shape_dangky.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/shape_dangnhap.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/shape_matkhau.xml" value="0.204" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/activity_man_hinh_chao.xml" value="0.264" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/activity_manhinhdangky.xml" value="0.4" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/activity_manhinhdangnhap.xml" value="0.264" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/fragment_toi.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/layout/fragment_xep_hang.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/menu/bottom_nav.xml" value="0.24895833333333334" />
       </map>
     </option>
   </component>
