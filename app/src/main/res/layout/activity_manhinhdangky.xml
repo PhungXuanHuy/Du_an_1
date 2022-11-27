@@ -10,15 +10,14 @@
 
     <ImageView
         android:id="@+id/ivTroLai"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:src="@drawable/ic_trolai" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="3dp"
         android:text="Đăng ký"
         android:textAlignment="center"
         android:textColor="#5A5959"
@@ -30,10 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivTroLai"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/shape_tendangnhap"
         android:hint="Tên đăng nhập"
+        android:inputType="text"
         android:padding="16dp"
+        android:textColor="@color/white"
         android:textColorHint="#5A5959" />
 
     <EditText
@@ -43,7 +44,9 @@
         android:layout_below="@id/edTenDangNhap"
         android:background="@drawable/shape_dangky"
         android:hint="Mật khẩu"
+        android:inputType="textPassword"
         android:padding="16dp"
+        android:textColor="@color/white"
         android:textColorHint="#5A5959" />
 
     <EditText
@@ -53,7 +56,9 @@
         android:layout_below="@id/edMatKhau"
         android:background="@drawable/shape_matkhau"
         android:hint="Nhập lại mật khẩu"
+        android:inputType="textPassword"
         android:padding="16dp"
+        android:textColor="@color/white"
         android:textColorHint="#5A5959" />
 
     <Button
@@ -64,6 +69,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/shape_btndangnhap"
+        android:enabled="false"
         android:text="Đăng ký"
         android:textSize="16sp"
         android:textStyle="bold" />
