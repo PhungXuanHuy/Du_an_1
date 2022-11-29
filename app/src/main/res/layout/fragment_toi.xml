@@ -1,18 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#141F25"
+    android:padding="8dp"
     tools:context=".Fragment.ToiFragment">
 
     <TextView
+        android:id="@+id/tvUser"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:text="Màn hình Tôi"
+        android:text="Hồ sơ"
+        android:textColor="#818080"
+        android:textSize="20dp"
         />
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_settings_24"
+        />
+
+    <RelativeLayout
+        android:id="@+id/llUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUser"
+        android:layout_marginTop="24dp"
+        >
+
+        <TextView
+            android:id="@+id/tvNguoiDung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tên người dùng"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tvTaiKhoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNguoiDung"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:text="Tên tài khoản"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            />
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            tools:src="@tools:sample/avatars"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTaiKhoan"
+            android:layout_marginTop="5dp"
+            android:text="Tổng điểm"
+            android:textColor="#55d8ff"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+
+
 
 </RelativeLayout>
