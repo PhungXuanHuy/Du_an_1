@@ -21,6 +21,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="1dp"
         android:background="#141F25"
-        app:itemRippleColor="#55d8ff"
-        app:menu="@menu/bottom_nav" />
+        app:menu="@menu/bottom_nav"
+        />
 </RelativeLayout>

@@ -4,15 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#141F25"
+    android:padding="16dp"
     tools:context=".Fragment.HomeFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:text="Màn hình Home"
-        />
 
 </RelativeLayout>
