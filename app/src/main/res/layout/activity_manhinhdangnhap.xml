@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#141F25"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="16dp"
     tools:context=".Manhinhdangnhap">
 
     <TextView
@@ -25,6 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_tendangnhap"
+        android:textColor="@color/white"
+        android:inputType="text"
         android:hint="Tên đăng nhập"
         android:padding="16dp"
         android:textColorHint="#5A5959" />
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_matkhau"
         android:hint="Mật khẩu"
+        android:textColor="@color/white"
         android:inputType="textPassword"
         android:padding="16dp"
         android:textColorHint="#5A5959" />
@@ -48,6 +51,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/shape_btndangnhap"
+        android:enabled="false"
         android:text="Đăng nhập"
         android:textStyle="bold" />
 
