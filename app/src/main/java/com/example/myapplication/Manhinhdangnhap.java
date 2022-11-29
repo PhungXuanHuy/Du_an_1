@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +11,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class Manhinhdangnhap extends AppCompatActivity {
-    EditText edTenDangNhap,edMatKhau;
+    EditText edTenDangNhap, edMatKhau;
     Button btnDangNhap;
     TextView tvDangKy;
+    FirebaseDatabase database;
+    DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +39,14 @@ public class Manhinhdangnhap extends AppCompatActivity {
         tvDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Manhinhdangnhap.this,Manhinhdangky.class);
+                Intent intent = new Intent(Manhinhdangnhap.this, Manhinhdangky.class);
                 startActivity(intent);
             }
         });
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Manhinhdangnhap.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+                KiemTraDangNhap();
             }
         });
     }
@@ -52,6 +64,7 @@ public class Manhinhdangnhap extends AppCompatActivity {
         edTenDangNhap.setText("");
         edMatKhau.setText("");
     }
+
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -70,4 +83,33 @@ public class Manhinhdangnhap extends AppCompatActivity {
 
         }
     };
+
+    private void KiemTraDangNhap() {
+        String tenDangNhap = edTenDangNhap.getText().toString().trim();
+        String matKhau = edMatKhau.getText().toString().trim();
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("DanhSachTaiKhoan");
+        Query kiemTra = reference.orderByChild("tenDangNhap").equalTo(tenDangNhap);
+        kiemTra.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String matKhauFireBase = snapshot.child(tenDangNhap).child("matKhau").getValue(String.class);
+                    if (matKhau.equals(matKhauFireBase)) {
+                        Intent intent = new Intent(Manhinhdangnhap.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(Manhinhdangnhap.this, "Thông tin đăng nhập sai", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(Manhinhdangnhap.this, "Tên đăng nhập không tồn tại", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
