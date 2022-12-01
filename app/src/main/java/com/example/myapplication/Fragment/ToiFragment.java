@@ -26,6 +26,7 @@ public class ToiFragment extends Fragment {
     TextView tvNguoiDung;
     TextView tvTaiKhoan;
     TextView tvTongDiem;
+    SharedPreferences sharedPreferences;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,15 +75,19 @@ public class ToiFragment extends Fragment {
         tvNguoiDung = view.findViewById(R.id.tvNguoiDung);
         tvTaiKhoan = view.findViewById(R.id.tvTaiKhoan);
         tvTongDiem = view.findViewById(R.id.tvTongDiem);
+        sharedPreferences = getContext().getSharedPreferences("user",MODE_PRIVATE);
+        String hoTen = sharedPreferences.getString("tennguoidung","");
+        String taikhoan = sharedPreferences.getString("tendangnhap","");
+        int tongDiem = sharedPreferences.getInt("tongdiem",0);
+        tvNguoiDung.setText(hoTen);
+        tvTaiKhoan.setText(taikhoan);
+        tvTongDiem.setText(tongDiem+"");
         return view;
     }
 
     @Override
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",MODE_PRIVATE);
-        tvNguoiDung.setText(sharedPreferences.getString("tennguoidung",""));
-        tvNguoiDung.setText(sharedPreferences.getString("tendangnhap",""));
-        tvNguoiDung.setText(sharedPreferences.getInt("tongdiem",0)+"");
+
     }
 }
