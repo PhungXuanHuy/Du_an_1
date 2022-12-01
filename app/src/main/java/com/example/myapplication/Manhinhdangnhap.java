@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -97,6 +98,14 @@ public class Manhinhdangnhap extends AppCompatActivity {
                     String matKhauFireBase = snapshot.child(tenDangNhap).child("matKhau").getValue(String.class);
                     if (matKhau.equals(matKhauFireBase)) {
                         Intent intent = new Intent(Manhinhdangnhap.this, MainActivity.class);
+                        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        String tenNguoiDungFireBase = snapshot.child(tenDangNhap).child("hoTen").getValue(String.class);
+                        int tongDiem = snapshot.child(tenDangNhap).child("tongDiem").getValue(Integer.class);
+                        editor.putString("tennguoidung",tenNguoiDungFireBase);
+                        editor.putString("tendangnhap",tenDangNhap);
+                        editor.putInt("tongdiem",tongDiem);
+                        editor.commit();
                         startActivity(intent);
                         finish();
                     } else {

@@ -1,12 +1,19 @@
 package com.example.myapplication.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
 
@@ -16,7 +23,9 @@ import com.example.myapplication.R;
  * create an instance of this fragment.
  */
 public class ToiFragment extends Fragment {
-
+    TextView tvNguoiDung;
+    TextView tvTaiKhoan;
+    TextView tvTongDiem;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +70,19 @@ public class ToiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_toi, container, false);
+        View view = inflater.inflate(R.layout.fragment_toi, container, false);
+        tvNguoiDung = view.findViewById(R.id.tvNguoiDung);
+        tvTaiKhoan = view.findViewById(R.id.tvTaiKhoan);
+        tvTongDiem = view.findViewById(R.id.tvTongDiem);
+        return view;
+    }
+
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",MODE_PRIVATE);
+        tvNguoiDung.setText(sharedPreferences.getString("tennguoidung",""));
+        tvNguoiDung.setText(sharedPreferences.getString("tendangnhap",""));
+        tvNguoiDung.setText(sharedPreferences.getInt("tongdiem",0)+"");
     }
 }
