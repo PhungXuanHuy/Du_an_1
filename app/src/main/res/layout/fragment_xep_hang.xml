@@ -4,25 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141F25"
+    android:background="#5A5959"
     tools:context=".Fragment.XepHangFragment">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rlXepHang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:text="Xếp hạng"
-        android:id="@+id/tvRank"
-        />
+        android:layout_height="200dp"
+        android:background="#141F25">
 
-    <ListView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOP 10 THÀNH VIÊN CÓ TỔNG ĐIỂM CAO NHẤT"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="1dp"
+        android:padding="8dp"
+        android:background="#141F25"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvXepHang"
-        android:layout_below="@id/tvRank"
-        android:layout_margin="10dp"
-        />
+        android:layout_below="@id/rlXepHang"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvXepHang"
+            />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

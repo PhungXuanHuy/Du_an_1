@@ -4,73 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141F25"
-    android:padding="16dp"
+    android:background="#5A5959"
     tools:context=".Manhinhdangky">
 
-    <ImageView
-        android:id="@+id/ivTroLai"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/ic_trolai" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Đăng ký"
-        android:textAlignment="center"
-        android:textColor="#5A5959"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/edTenDangNhap"
+    <RelativeLayout
+        android:id="@+id/toolbarDk"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivTroLai"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/shape_tendangnhap"
-        android:hint="Tên đăng nhập"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="#5A5959" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="#141F25">
 
-    <EditText
-        android:id="@+id/edMatKhau"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edTenDangNhap"
-        android:background="@drawable/shape_dangky"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="#5A5959" />
+        <ImageView
+            android:id="@+id/ivTroLai"
+            android:layout_marginLeft="8dp"
+            android:layout_width="32dp"
+            android:layout_centerVertical="true"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_trolai" />
 
-    <EditText
-        android:id="@+id/edNhapLaiMatKhau"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edMatKhau"
-        android:background="@drawable/shape_matkhau"
-        android:hint="Nhập lại mật khẩu"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="#5A5959" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Đăng ký"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:textColor="#5A5959"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/btnDangKy"
+    <RelativeLayout
+        android:id="@+id/llUser"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edNhapLaiMatKhau"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/shape_btndangnhap"
-        android:enabled="false"
-        android:text="Đăng ký"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarDk"
+        android:layout_marginTop="1dp"
+        android:background="#141F25"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/edTenDangNhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_tendangnhap"
+            android:hint="Tên đăng nhập"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="#5A5959" />
+
+        <EditText
+            android:id="@+id/edMatKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edTenDangNhap"
+            android:background="@drawable/shape_dangky"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="#5A5959" />
+
+        <EditText
+            android:id="@+id/edNhapLaiMatKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edMatKhau"
+            android:background="@drawable/shape_matkhau"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="#5A5959" />
+
+        <Button
+            android:id="@+id/btnDangKy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edNhapLaiMatKhau"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/shape_btndangnhap"
+            android:enabled="false"
+            android:text="Đăng ký"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+
+
 </RelativeLayout>

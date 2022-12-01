@@ -4,33 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141F25"
-    android:padding="8dp"
+    android:background="#5A5959"
     tools:context=".Fragment.ToiFragment">
 
-    <TextView
-        android:id="@+id/tvUser"
+    <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Hồ sơ"
-        android:textColor="#818080"
-        android:textSize="20dp"
-        />
-    <ImageView
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_baseline_settings_24"
-        />
+        android:layout_height="?attr/actionBarSize"
+        android:background="#141F25">
+
+        <TextView
+            android:id="@+id/tvUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Hồ sơ"
+            android:textColor="#818080"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_baseline_settings_24" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/llUser"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvUser"
-        android:layout_marginTop="24dp"
-        >
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="1dp"
+        android:background="#141F25"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tvNguoiDung"
@@ -39,8 +49,7 @@
             android:layout_weight="1"
             android:text="Tên người dùng"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tvTaiKhoan"
@@ -51,18 +60,17 @@
             android:layout_weight="1"
             android:text="Tên tài khoản"
             android:textColor="@color/white"
-            android:textSize="15dp"
-            />
+            android:textSize="15dp" />
 
         <ImageView
-            android:id="@+id/imgUser"
+            android:id="@+id/ivHinh"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
-            tools:src="@tools:sample/avatars"
-            />
+            tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/tvTongDiem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTaiKhoan"
@@ -71,8 +79,6 @@
             android:textColor="#55d8ff"
             android:textSize="15dp" />
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>
