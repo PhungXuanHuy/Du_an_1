@@ -51,7 +51,7 @@ public class Manhinhdangky extends AppCompatActivity {
                 }
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("DanhSachTaiKhoan");
-                TaiKhoan taiKhoan = new TaiKhoan(tenDangNhap,matKhau,"Người dùng",0,"khách hàng");
+                TaiKhoan taiKhoan = new TaiKhoan(tenDangNhap,matKhau,"Người dùng",0,"https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png","khách hàng");
                 reference.child(tenDangNhap).setValue(taiKhoan);
                 Toast.makeText(Manhinhdangky.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 finish();
