@@ -1,10 +1,17 @@
 package com.example.myapplication.Fragment;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,8 +20,11 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.CaiDatActivity;
 import com.example.myapplication.R;
 
 /**
@@ -26,7 +36,10 @@ public class ToiFragment extends Fragment {
     TextView tvNguoiDung;
     TextView tvTaiKhoan;
     TextView tvTongDiem;
+    ImageView ivHinh;
+    ImageView ivCaiDat;
     SharedPreferences sharedPreferences;
+    private ActivityResultLauncher<Intent> launcher;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,19 +88,37 @@ public class ToiFragment extends Fragment {
         tvNguoiDung = view.findViewById(R.id.tvNguoiDung);
         tvTaiKhoan = view.findViewById(R.id.tvTaiKhoan);
         tvTongDiem = view.findViewById(R.id.tvTongDiem);
+        ivHinh = view.findViewById(R.id.ivHinh);
+        ivCaiDat = view.findViewById(R.id.ivCaiDat);
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode()== RESULT_OK){
+                    getActivity().finish();
+                }
+            }
+        });
         sharedPreferences = getContext().getSharedPreferences("user",MODE_PRIVATE);
         String hoTen = sharedPreferences.getString("tennguoidung","");
         String taikhoan = sharedPreferences.getString("tendangnhap","");
         int tongDiem = sharedPreferences.getInt("tongdiem",0);
+        String linkAnh = sharedPreferences.getString("linkanh","");
         tvNguoiDung.setText(hoTen);
         tvTaiKhoan.setText(taikhoan);
-        tvTongDiem.setText(tongDiem+"");
+        tvTongDiem.setText("Tổng điểm: "+tongDiem);
+        Glide.with(getContext()).load(linkAnh).into(ivHinh);
         return view;
     }
 
     @Override
-    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ivCaiDat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CaiDatActivity.class);
+                launcher.launch(intent);
+            }
+        });
     }
 }

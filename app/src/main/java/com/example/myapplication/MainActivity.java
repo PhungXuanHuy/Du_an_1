@@ -17,26 +17,26 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment;
     XepHangFragment xepHangFragment;
     ToiFragment toiFragment;
-    BottomNavigationView bottom_nav;
-    SharedPreferences sharedPreferences;
+    BottomNavigationView navigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AnhXa();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,homeFragment).commit();
-        bottom_nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+        navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.itHome:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,homeFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
                         return true;
                     case R.id.itXepHang:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,xepHangFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, xepHangFragment).commit();
                         return true;
                     case R.id.itToi:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,toiFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, toiFragment).commit();
                         return true;
                 }
                 return true;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AnhXa() {
-        bottom_nav = findViewById(R.id.bottom_nav);
+        navigation = findViewById(R.id.navigation);
         homeFragment = new HomeFragment();
         xepHangFragment = new XepHangFragment();
         toiFragment = new ToiFragment();

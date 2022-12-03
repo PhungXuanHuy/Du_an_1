@@ -1,14 +1,24 @@
 package com.example.myapplication.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.QuanLyActivity;
 import com.example.myapplication.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +26,9 @@ import com.example.myapplication.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
+    String phanLoai;
+    CardView cvQuanLy,cvTuVung,cvNguPhap;
+    ImageView ivAvatar;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +73,30 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        cvQuanLy = view.findViewById(R.id.cvQuanLy);
+        ivAvatar = view.findViewById(R.id.ivAvatar);
+        TextView tvTongdiem = view.findViewById(R.id.tvTongDiem);
+        SharedPreferences preferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String linkAnh = preferences.getString("linkanh","");
+        Glide.with(getContext()).load(linkAnh).into(ivAvatar);
+        tvTongdiem.setText(preferences.getInt("tongdiem",0)+"");
+        phanLoai = preferences.getString("phanloai","");
+        QuanLy();
+        cvQuanLy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), QuanLyActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
+    }
+    private void QuanLy(){
+        if(phanLoai.equalsIgnoreCase("khách hàng")){
+            cvQuanLy.setVisibility(View.GONE);
+        }else {
+            cvQuanLy.setVisibility(View.VISIBLE);
+        }
     }
 }

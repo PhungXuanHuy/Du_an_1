@@ -5,16 +5,18 @@ public class TaiKhoan {
     private String matKhau;
     private String hoTen;
     private int tongDiem;
+    private String linkAnh;
     private String phanLoai;
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String tenDangNhap, String matKhau, String hoTen, int tongDiem, String phanLoai) {
+    public TaiKhoan(String tenDangNhap, String matKhau, String hoTen, int tongDiem, String linkAnh, String phanLoai) {
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
         this.hoTen = hoTen;
         this.tongDiem = tongDiem;
+        this.linkAnh = linkAnh;
         this.phanLoai = phanLoai;
     }
 
@@ -56,5 +58,13 @@ public class TaiKhoan {
 
     public void setPhanLoai(String phanLoai) {
         this.phanLoai = phanLoai;
+    }
+
+    public String getLinkAnh() {
+        return linkAnh;
+    }
+
+    public void setLinkAnh(String linkAnh) {
+        this.linkAnh = linkAnh;
     }
 }

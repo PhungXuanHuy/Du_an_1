@@ -101,10 +101,14 @@ public class Manhinhdangnhap extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         String tenNguoiDungFireBase = snapshot.child(tenDangNhap).child("hoTen").getValue(String.class);
+                        String phanLoai = snapshot.child(tenDangNhap).child("phanLoai").getValue(String.class);
+                        String linkAnh = snapshot.child(tenDangNhap).child("linkAnh").getValue(String.class);
                         int tongDiem = snapshot.child(tenDangNhap).child("tongDiem").getValue(Integer.class);
                         editor.putString("tennguoidung",tenNguoiDungFireBase);
                         editor.putString("tendangnhap",tenDangNhap);
+                        editor.putString("phanloai",phanLoai);
                         editor.putInt("tongdiem",tongDiem);
+                        editor.putString("linkanh",linkAnh);
                         editor.commit();
                         startActivity(intent);
                         finish();
