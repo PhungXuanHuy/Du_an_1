@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.DTO.NguPhap;
 import com.example.myapplication.DTO.TaiKhoan;
+import com.example.myapplication.DTO.TuVung;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,28 +24,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class KetThucNguPhapActivity extends AppCompatActivity {
+public class KetThucTuVungActivity extends AppCompatActivity {
     ImageView ivHinh;
     TextView tvSoCauDung,tvSoCauSai;
     Button btnTroLai,btnLamLai;
-    private ArrayList<NguPhap> nguPhaps = new ArrayList<>();
+    private ArrayList<TuVung> tuVungs = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ket_thuc_ngu_phap);
+        setContentView(R.layout.activity_ket_thuc_tu_vung);
         ivHinh = findViewById(R.id.ivHinh);
         btnTroLai = findViewById(R.id.btnTroLai);
         btnLamLai = findViewById(R.id.btnLamLai);
         tvSoCauDung = findViewById(R.id.tvSoCauDung);
         tvSoCauSai = findViewById(R.id.tvSoCauSai);
-        Glide.with(this).load("https://thumbs.gfycat.com/AcademicAdoredCoot-size_restricted.gif").into(ivHinh);
-        nguPhaps = (ArrayList<NguPhap>) getIntent().getSerializableExtra("cauhoi");
+        Glide.with(this).load("https://thumbs.gfycat.com/DismalWarmArmadillo-max-1mb.gif").into(ivHinh);
+        tuVungs = (ArrayList<TuVung>) getIntent().getSerializableExtra("cauhoi");
         tvSoCauDung.setText(getSoCauDung()+"");
-        tvSoCauSai.setText(String.valueOf(nguPhaps.size()-getSoCauDung()));
+        tvSoCauSai.setText(String.valueOf(tuVungs.size()-getSoCauDung()));
         btnLamLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(KetThucNguPhapActivity.this,NguPhapActivity.class));
+                startActivity(new Intent(KetThucTuVungActivity.this,TuVungActivity.class));
                 finish();
             }
         });
@@ -79,10 +80,10 @@ public class KetThucNguPhapActivity extends AppCompatActivity {
     }
     private int getSoCauDung(){
         int soCauDung = 0;
-        for (int i = 0;i<nguPhaps.size();i++){
-            int getNguoiDungChonDapAn = nguPhaps.get(i).getNguoiDungChonDapAn();
-            int getDapAn = nguPhaps.get(i).getDapAn();
-            if(getNguoiDungChonDapAn == getDapAn){
+        for (int i = 0;i<tuVungs.size();i++){
+            String getDapAn = tuVungs.get(i).getDapAn();
+            String getNghia = tuVungs.get(i).getNghiaTuVung();
+            if(getNghia.equalsIgnoreCase(getDapAn)){
                 soCauDung++;
             }
         }

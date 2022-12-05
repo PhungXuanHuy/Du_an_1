@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.BatDauNguPhapActivity;
+import com.example.myapplication.BatDauTuVungActivity;
 import com.example.myapplication.QuanLyActivity;
 import com.example.myapplication.R;
 
@@ -75,6 +76,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         cvQuanLy = view.findViewById(R.id.cvQuanLy);
         cvNguPhap = view.findViewById(R.id.cvNguPhap);
+        cvTuVung = view.findViewById(R.id.cvTuVung);
         ivAvatar = view.findViewById(R.id.ivAvatar);
         TextView tvTongdiem = view.findViewById(R.id.tvTongDiem);
         SharedPreferences preferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -95,6 +97,12 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BatDauNguPhapActivity.class);
                 startActivity(intent);
+            }
+        });
+        cvTuVung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), BatDauTuVungActivity.class));
             }
         });
         return view;

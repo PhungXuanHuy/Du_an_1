@@ -23,10 +23,12 @@
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/drawable/shape_lua_chon2.xml" value="0.2725" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/drawable/shape_tendangnhap.xml" value="0.27" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_bat_dau.xml" value="0.33" />
+        <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_bat_dau_tu_vung.xml" value="0.3625" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_cai_dat.xml" value="0.264" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_chinh_sua_thong_tin.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_gioi_thieu.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_ket_thuc_ngu_phap.xml" value="0.3625" />
+        <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_ket_thuc_tu_vung.xml" value="0.3625" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_man_hinh_chao.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_manhinhdangky.xml" value="0.33" />
@@ -34,12 +36,14 @@
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_ngu_phap.xml" value="0.33" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_quan_ly.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_them_ngu_phap.xml" value="0.3484375" />
+        <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/activity_tu_vung.xml" value="0.3625" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/fragment_toi.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/fragment_xep_hang.xml" value="0.358695652173913" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/idialog_layout.xml" value="0.3614583333333333" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/item_ngu_phap.xml" value="0.3614583333333333" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/item_xep_hang.xml" value="0.24895833333333334" />
+        <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/sua_ngu_phap_dialog.xml" value="0.3625" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/layout/them_ngu_phap_dialog.xml" value="0.3614583333333333" />
         <entry key="..\:/ProjectSonKim/123/app/src/main/res/menu/bottom_nav.xml" value="0.3625" />
         <entry key="..\:/Users/kimha/Desktop/Du_an_1/app/src/main/res/drawable/ic_home.xml" value="0.204" />

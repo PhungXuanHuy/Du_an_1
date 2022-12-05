@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.DTO.TaiKhoan;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -52,9 +55,13 @@ public class Manhinhdangky extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("DanhSachTaiKhoan");
                 TaiKhoan taiKhoan = new TaiKhoan(tenDangNhap,matKhau,"Người dùng",0,"https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png","khách hàng");
-                reference.child(tenDangNhap).setValue(taiKhoan);
-                Toast.makeText(Manhinhdangky.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                finish();
+                reference.child(tenDangNhap).setValue(taiKhoan, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        Toast.makeText(Manhinhdangky.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
             }
         });
     }

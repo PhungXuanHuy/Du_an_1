@@ -81,6 +81,8 @@ public class XepHangFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_xep_hang, container, false);
         lvXepHang = view.findViewById(R.id.lvXepHang);
         taiKhoans = new ArrayList<>();
+        xepHangAdapter = new XepHangAdapter(getContext(),taiKhoans);
+        lvXepHang.setAdapter(xepHangAdapter);
         getAllTaiKhoan();
         return view;
     }
@@ -90,11 +92,15 @@ public class XepHangFragment extends Fragment {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(taiKhoans!=null){
+                    taiKhoans.clear();
+                }
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     TaiKhoan taiKhoan = snapshot1.getValue(TaiKhoan.class);
                     if(taiKhoan.getTongDiem()>0){
                         taiKhoans.add(taiKhoan);
                     }
+                    xepHangAdapter.notifyDataSetChanged();
                 }
                 Collections.sort(taiKhoans, new Comparator<TaiKhoan>() {
                     @Override
@@ -108,8 +114,6 @@ public class XepHangFragment extends Fragment {
                         taiKhoans.remove(i);
                     }
                 }
-                xepHangAdapter = new XepHangAdapter(getContext(),taiKhoans);
-                lvXepHang.setAdapter(xepHangAdapter);
             }
 
             @Override

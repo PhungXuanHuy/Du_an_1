@@ -78,6 +78,9 @@ public class ThemNguPhapActivity extends AppCompatActivity {
                         reference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(nguPhaps!=null){
+                                    nguPhaps.clear();
+                                }
                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                                     NguPhap nguPhap = dataSnapshot.getValue(NguPhap.class);
                                     nguPhaps.add(nguPhap);
@@ -105,7 +108,7 @@ public class ThemNguPhapActivity extends AppCompatActivity {
                     NguPhap nguPhap = dataSnapshot.getValue(NguPhap.class);
                     nguPhaps.add(nguPhap);
                 }
-                nguPhapAdapter = new NguPhapAdapter(getApplicationContext(),nguPhaps);
+                nguPhapAdapter = new NguPhapAdapter(ThemNguPhapActivity.this,nguPhaps);
                 lvNguPhap.setAdapter(nguPhapAdapter);
             }
 
