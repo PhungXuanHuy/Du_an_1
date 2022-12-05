@@ -102,14 +102,6 @@ public class XepHangFragment extends Fragment {
                         return taiKhoan.getTongDiem() - t1.getTongDiem();
                     }
                 });
-//                for (int i=0;i<=taiKhoans.size();i++){
-//                    if(i<10){
-//                        if(taiKhoans.get(i)!=null){
-//                            Log.d("taiKhoan", "taikhoan: "+taiKhoans.get(i));
-//                            top10.add(taiKhoans.get(i));
-//                        }
-//                    }
-//                }
                 Collections.reverse(taiKhoans);
                 for (int i=0;i<taiKhoans.size();i++){
                     if(i>9){
