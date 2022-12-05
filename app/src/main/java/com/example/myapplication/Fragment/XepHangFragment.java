@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +33,7 @@ public class XepHangFragment extends Fragment {
     ArrayList<TaiKhoan> taiKhoans;
     XepHangAdapter xepHangAdapter;
     ListView lvXepHang;
+    ArrayList<TaiKhoan> top10 = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,8 +82,6 @@ public class XepHangFragment extends Fragment {
         lvXepHang = view.findViewById(R.id.lvXepHang);
         taiKhoans = new ArrayList<>();
         getAllTaiKhoan();
-        xepHangAdapter = new XepHangAdapter(getContext(),taiKhoans);
-        lvXepHang.setAdapter(xepHangAdapter);
         return view;
     }
     private void getAllTaiKhoan(){
@@ -90,9 +92,32 @@ public class XepHangFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     TaiKhoan taiKhoan = snapshot1.getValue(TaiKhoan.class);
-                    taiKhoans.add(taiKhoan);
+                    if(taiKhoan.getTongDiem()>0){
+                        taiKhoans.add(taiKhoan);
+                    }
                 }
-                xepHangAdapter.notifyDataSetChanged();
+                Collections.sort(taiKhoans, new Comparator<TaiKhoan>() {
+                    @Override
+                    public int compare(TaiKhoan taiKhoan, TaiKhoan t1) {
+                        return taiKhoan.getTongDiem() - t1.getTongDiem();
+                    }
+                });
+//                for (int i=0;i<=taiKhoans.size();i++){
+//                    if(i<10){
+//                        if(taiKhoans.get(i)!=null){
+//                            Log.d("taiKhoan", "taikhoan: "+taiKhoans.get(i));
+//                            top10.add(taiKhoans.get(i));
+//                        }
+//                    }
+//                }
+                Collections.reverse(taiKhoans);
+                for (int i=0;i<taiKhoans.size();i++){
+                    if(i>9){
+                        taiKhoans.remove(i);
+                    }
+                }
+                xepHangAdapter = new XepHangAdapter(getContext(),taiKhoans);
+                lvXepHang.setAdapter(xepHangAdapter);
             }
 
             @Override
