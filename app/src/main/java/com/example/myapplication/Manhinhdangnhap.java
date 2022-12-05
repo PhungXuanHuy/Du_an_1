@@ -103,8 +103,10 @@ public class Manhinhdangnhap extends AppCompatActivity {
                         String tenNguoiDungFireBase = snapshot.child(tenDangNhap).child("hoTen").getValue(String.class);
                         String phanLoai = snapshot.child(tenDangNhap).child("phanLoai").getValue(String.class);
                         String linkAnh = snapshot.child(tenDangNhap).child("linkAnh").getValue(String.class);
+                        String matKhau = snapshot.child(tenDangNhap).child("matKhau").getValue(String.class);
                         int tongDiem = snapshot.child(tenDangNhap).child("tongDiem").getValue(Integer.class);
                         editor.putString("tennguoidung",tenNguoiDungFireBase);
+                        editor.putString("matkhau",matKhau);
                         editor.putString("tendangnhap",tenDangNhap);
                         editor.putString("phanloai",phanLoai);
                         editor.putInt("tongdiem",tongDiem);

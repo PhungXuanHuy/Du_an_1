@@ -16,6 +16,18 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ThemNguPhapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KetThucNguPhapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NguPhapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BatDauNguPhapActivity"
+            android:exported="false" />
+        <activity
             android:name=".QuanLyActivity"
             android:exported="false" />
         <activity
