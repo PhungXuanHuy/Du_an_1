@@ -15,10 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.BatDauNguPhapActivity;
 import com.example.myapplication.QuanLyActivity;
 import com.example.myapplication.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,6 +74,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         cvQuanLy = view.findViewById(R.id.cvQuanLy);
+        cvNguPhap = view.findViewById(R.id.cvNguPhap);
         ivAvatar = view.findViewById(R.id.ivAvatar);
         TextView tvTongdiem = view.findViewById(R.id.tvTongDiem);
         SharedPreferences preferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -87,6 +87,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), QuanLyActivity.class);
+                startActivity(intent);
+            }
+        });
+        cvNguPhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BatDauNguPhapActivity.class);
                 startActivity(intent);
             }
         });
