@@ -42,6 +42,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+
         <Button
             android:id="@+id/btnChinhSuaThongTin"
             android:layout_width="match_parent"
@@ -49,8 +50,8 @@
             android:background="@drawable/shape_button2"
             android:layout_height="wrap_content"
             android:textColor="@color/color_main"
-            android:text="Chỉnh sửa thông tin" />
-
+            android:text="Chỉnh sửa thông tin"
+            />
         <Button
             android:id="@+id/btnGioiThieu"
             android:layout_marginBottom="8dp"

@@ -45,7 +45,7 @@
         <TextView
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:text="Tôi là Fan MU vỏn vẹn cũng đã được 20 năm. Sau một vụ nổ lớn MU 2-1 Liver hôm qua. Sáng ra đường ăn sáng, mang chiếc áo MU cứ như là vua mang long bào. Đi ra đường ch.ó nhìn sợ không dám s.ủa. Trưa đua vài lệnh chiều xanh tím. Tối ra phố đi bọ các em gái thì tranh nhau xin chụp hình chung. Hội nyc thì đồng loạt đòi nối lại tình xưa. Bạn bè thì nhìn tôi cũng phải cúi đầu nể 10 phần. Về nhà thì gia đình tự hào, hàng xóm thì ganh tỵ vì biết tôi là fan MU 20 năm."
+            android:text="Blue cat ứng dụng dạy tiếng anh số một tại Việt Nam, ứng dụng hỗ trợ giảng dạy, mini game liên quan đến tiếng anh, nhằm cải thiện trình độ tiếng anh nâng cao tính tư duy tự học. Ứng dụng miễn phí tham gia khóa học ngay."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
