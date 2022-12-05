@@ -3,38 +3,77 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:padding="16dp"
+    android:background="@color/bg_app"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Thêm ngữ pháp"
+        android:gravity="center"
+        android:textSize="30dp"
+        />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_below="@id/topBar"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/gray"
+        />
+
+
     <EditText
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="câu hỏi"
+        android:textColor="@color/white"
+        android:layout_marginBottom="3dp"
         android:id="@+id/edCauHoi"
         />
     <EditText
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="lựa chọn 1"
+        android:textColorHint="@color/white"
         android:id="@+id/edLuaChon1"
         />
     <EditText
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="lựa chọn 2"
         android:id="@+id/edLuaChon2"
+        android:textColorHint="@color/white"
         />
     <EditText
+        android:layout_marginBottom="3dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="lựa chọn 3"
         android:id="@+id/edLuaChon3"
         />
     <EditText
+        android:layout_marginBottom="3dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="lựa chọn 4"
         android:id="@+id/edLuaChon4"
         />
     <EditText
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="đáp án"
