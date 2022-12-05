@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,11 +90,28 @@ public class XepHangFragment extends Fragment {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(taiKhoans!=null){
+                    taiKhoans.clear();
+                }
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     TaiKhoan taiKhoan = snapshot1.getValue(TaiKhoan.class);
-                    taiKhoans.add(taiKhoan);
+                    if(taiKhoan.getTongDiem()>0){
+                        taiKhoans.add(taiKhoan);
+                    }
+                    xepHangAdapter.notifyDataSetChanged();
                 }
-                xepHangAdapter.notifyDataSetChanged();
+                Collections.sort(taiKhoans, new Comparator<TaiKhoan>() {
+                    @Override
+                    public int compare(TaiKhoan taiKhoan, TaiKhoan t1) {
+                        return taiKhoan.getTongDiem() - t1.getTongDiem();
+                    }
+                });
+                Collections.reverse(taiKhoans);
+                for (int i=0;i<taiKhoans.size();i++){
+                    if(i>9){
+                        taiKhoans.remove(i);
+                    }
+                }
             }
 
             @Override

@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tên người dùng"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -59,7 +59,7 @@
             android:layout_below="@id/tvNguoiDung"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:text="Tên tài khoản"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="15dp" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTaiKhoan"
             android:layout_marginTop="5dp"
-            android:text="Tổng điểm"
+            android:text=""
             android:textColor="#55d8ff"
             android:textSize="15dp" />
     </RelativeLayout>

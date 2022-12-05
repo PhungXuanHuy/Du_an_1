@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/ivTongDiem"
-            android:text="0123"
+            android:text=""
             android:textColor="#FFEB3B"
             android:textSize="18sp"
             android:textStyle="bold" />

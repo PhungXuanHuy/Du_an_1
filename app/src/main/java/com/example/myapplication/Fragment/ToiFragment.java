@@ -26,6 +26,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.CaiDatActivity;
 import com.example.myapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,13 +105,27 @@ public class ToiFragment extends Fragment {
             }
         });
         sharedPreferences = getContext().getSharedPreferences("user",MODE_PRIVATE);
-        String hoTen = sharedPreferences.getString("tennguoidung","");
         String taikhoan = sharedPreferences.getString("tendangnhap","");
-        int tongDiem = sharedPreferences.getInt("tongdiem",0);
         String linkAnh = sharedPreferences.getString("linkanh","");
-        tvNguoiDung.setText(hoTen);
-        tvTaiKhoan.setText(taikhoan);
-        tvTongDiem.setText("Tổng điểm: "+tongDiem);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("DanhSachTaiKhoan");
+        Query query = reference.orderByChild("tenDangNhap").equalTo(taikhoan);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int tongDiemFireBase = snapshot.child(taikhoan).child("tongDiem").getValue(Integer.class);
+                String hoTenFireBase = snapshot.child(taikhoan).child("hoTen").getValue(String.class);
+                tvNguoiDung.setText(hoTenFireBase);
+                tvTaiKhoan.setText(taikhoan);
+                tvTongDiem.setText("Tổng điểm: "+tongDiemFireBase);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Glide.with(getContext()).load(linkAnh).into(ivHinh);
         return view;
     }
