@@ -100,6 +100,10 @@ public class TuVungActivity extends AppCompatActivity {
     private void resetDapAn(){
         edDapAn.setText("");
     }
+
+    // chạy app và reset lại
+
+
     private void KetThucTuVung(){
         Intent intent = new Intent(TuVungActivity.this,KetThucTuVungActivity.class);
         Bundle bundle = new Bundle();
