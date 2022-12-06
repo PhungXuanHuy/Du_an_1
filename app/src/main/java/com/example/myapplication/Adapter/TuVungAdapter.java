@@ -113,7 +113,7 @@ public class TuVungAdapter extends BaseAdapter {
                                 String nghia = edNghia.getText().toString().trim();
                                 String anh = edLinkAnh.getText().toString().trim();
                                 TuVung tuVung1 = new TuVung(tuvung,nghia,anh);
-                                reference.child(tuVung).setValue(tuVung1, new DatabaseReference.CompletionListener() {
+                                reference.child(tuvung).setValue(tuVung1, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                         Toast.makeText(context, "Sửa từ vựng thành công", Toast.LENGTH_SHORT).show();
