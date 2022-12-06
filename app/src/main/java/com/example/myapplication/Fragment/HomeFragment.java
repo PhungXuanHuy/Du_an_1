@@ -10,13 +10,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.BatDauNguPhapActivity;
+import com.example.myapplication.BatDauTuVungActivity;
 import com.example.myapplication.QuanLyActivity;
 import com.example.myapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,12 +82,28 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         cvQuanLy = view.findViewById(R.id.cvQuanLy);
         cvNguPhap = view.findViewById(R.id.cvNguPhap);
+        cvTuVung = view.findViewById(R.id.cvTuVung);
         ivAvatar = view.findViewById(R.id.ivAvatar);
         TextView tvTongdiem = view.findViewById(R.id.tvTongDiem);
         SharedPreferences preferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-        String linkAnh = preferences.getString("linkanh","");
-        Glide.with(getContext()).load(linkAnh).into(ivAvatar);
-        tvTongdiem.setText(preferences.getInt("tongdiem",0)+"");
+        String tenDangNhap = preferences.getString("tendangnhap","");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("DanhSachTaiKhoan");
+        Query query = reference.orderByChild("tenDangNhap").equalTo(tenDangNhap);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int tongDiemFireBase = snapshot.child(tenDangNhap).child("tongDiem").getValue(Integer.class);
+                String linkAnhFireBase = snapshot.child(tenDangNhap).child("linkAnh").getValue(String.class);
+                tvTongdiem.setText(""+tongDiemFireBase);
+                Glide.with(getContext()).load(linkAnhFireBase).into(ivAvatar);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         phanLoai = preferences.getString("phanloai","");
         QuanLy();
         cvQuanLy.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +118,12 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BatDauNguPhapActivity.class);
                 startActivity(intent);
+            }
+        });
+        cvTuVung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), BatDauTuVungActivity.class));
             }
         });
         return view;

@@ -31,5 +31,11 @@ public class QuanLyActivity extends AppCompatActivity {
                 startActivity(new Intent(QuanLyActivity.this,ThemNguPhapActivity.class));
             }
         });
+        btnThemTuVung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QuanLyActivity.this,ThemTuVungActivity.class));
+            }
+        });
     }
 }

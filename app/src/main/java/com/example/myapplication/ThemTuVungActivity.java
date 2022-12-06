@@ -14,7 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.NguPhapAdapter;
+import com.example.myapplication.Adapter.TuVungAdapter;
 import com.example.myapplication.DTO.NguPhap;
+import com.example.myapplication.DTO.TuVung;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,40 +25,38 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ThemNguPhapActivity extends AppCompatActivity {
-    ImageView ivTroLai,ivThemNguPhap;
-    ArrayList<NguPhap> nguPhaps = new ArrayList<>();
-    NguPhapAdapter nguPhapAdapter;
+public class ThemTuVungActivity extends AppCompatActivity {
+    ImageView ivTroLai,ivThemTuVung;
+    ArrayList<TuVung> tuVungs = new ArrayList<>();
+    TuVungAdapter tuVungAdapter;
     FirebaseDatabase database;
     DatabaseReference reference;
-    ListView lvNguPhap;
+    ListView lvTuVung;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_ngu_phap);
+        setContentView(R.layout.activity_them_tu_vung);
         ivTroLai = findViewById(R.id.ivTroLai);
-        ivThemNguPhap = findViewById(R.id.ivThemNguPhap);
-        lvNguPhap = findViewById(R.id.lvNguPhap);
+        ivThemTuVung = findViewById(R.id.ivThemTuVung);
+        lvTuVung = findViewById(R.id.lvTuVung);
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("DanhSachNguPhap");
+        reference = database.getReference("DanhSachTuVung");
         ivTroLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        ivThemNguPhap.setOnClickListener(new View.OnClickListener() {
+        lvTuVung.setAdapter(tuVungAdapter);
+        ivThemTuVung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ThemNguPhapActivity.this);
-                View view1 = LayoutInflater.from(ThemNguPhapActivity.this).inflate(R.layout.them_ngu_phap_dialog,null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ThemTuVungActivity.this);
+                View view1 = LayoutInflater.from(ThemTuVungActivity.this).inflate(R.layout.them_tu_vung_dialog,null);
                 builder.setView(view1);
-                EditText edCauHoi = view1.findViewById(R.id.edCauHoi);
-                EditText edLuaChon1 = view1.findViewById(R.id.edLuaChon1);
-                EditText edLuaChon2 = view1.findViewById(R.id.edLuaChon2);
-                EditText edLuaChon3 = view1.findViewById(R.id.edLuaChon3);
-                EditText edLuaChon4 = view1.findViewById(R.id.edLuaChon4);
-                EditText edDapAn = view1.findViewById(R.id.edDapAn);
+                EditText edTuVung = view1.findViewById(R.id.edTuVung);
+                EditText edNghia = view1.findViewById(R.id.edNghia);
+                EditText edAnh = view1.findViewById(R.id.edAnh);
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -66,28 +66,25 @@ public class ThemNguPhapActivity extends AppCompatActivity {
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String cauHoi = edCauHoi.getText().toString().trim();
-                        String luaChon1 = edLuaChon1.getText().toString().trim();
-                        String luaChon2 = edLuaChon2.getText().toString().trim();
-                        String luaChon3 = edLuaChon3.getText().toString().trim();
-                        String luaChon4 = edLuaChon4.getText().toString().trim();
-                        int dapAn = Integer.parseInt(edDapAn.getText().toString().trim());
-                        NguPhap nguPhap = new NguPhap(cauHoi,luaChon1,luaChon2,luaChon3,luaChon4,dapAn);
-                        reference.child(cauHoi).setValue(nguPhap);
-                        Toast.makeText(ThemNguPhapActivity.this, "Thêm ngữ pháp thành công!", Toast.LENGTH_SHORT).show();
+                        String tuVung = edTuVung.getText().toString().trim();
+                        String nghia = edNghia.getText().toString().trim();
+                        String anh = edAnh.getText().toString().trim();
+                        TuVung tuVung1 = new TuVung(tuVung,nghia,anh);
+                        reference.child(tuVung).setValue(tuVung1);
+                        Toast.makeText(ThemTuVungActivity.this, "Thêm ngữ pháp thành công!", Toast.LENGTH_SHORT).show();
                         reference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(nguPhaps!=null){
-                                    nguPhaps.clear();
+                                if(tuVungs!=null){
+                                    tuVungs.clear();
                                 }
                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                    NguPhap nguPhap = dataSnapshot.getValue(NguPhap.class);
-                                    nguPhaps.add(nguPhap);
+                                    TuVung tuVung2 = dataSnapshot.getValue(TuVung.class);
+                                    tuVungs.add(tuVung2);
                                 }
-                                nguPhapAdapter = new NguPhapAdapter(ThemNguPhapActivity.this,nguPhaps);
-                                nguPhapAdapter.notifyDataSetChanged();
-                                lvNguPhap.setAdapter(nguPhapAdapter);
+                                tuVungAdapter = new TuVungAdapter(ThemTuVungActivity.this,tuVungs);
+                                tuVungAdapter.notifyDataSetChanged();
+                                lvTuVung.setAdapter(tuVungAdapter);
                             }
 
                             @Override
@@ -105,11 +102,11 @@ public class ThemNguPhapActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    NguPhap nguPhap = dataSnapshot.getValue(NguPhap.class);
-                    nguPhaps.add(nguPhap);
+                    TuVung tuVung = dataSnapshot.getValue(TuVung.class);
+                    tuVungs.add(tuVung);
                 }
-                nguPhapAdapter = new NguPhapAdapter(ThemNguPhapActivity.this,nguPhaps);
-                lvNguPhap.setAdapter(nguPhapAdapter);
+                tuVungAdapter = new TuVungAdapter(ThemTuVungActivity.this,tuVungs);
+                lvTuVung.setAdapter(tuVungAdapter);
             }
 
             @Override
@@ -117,6 +114,5 @@ public class ThemNguPhapActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
