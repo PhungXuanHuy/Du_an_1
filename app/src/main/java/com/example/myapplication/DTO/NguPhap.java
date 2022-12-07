@@ -8,21 +8,22 @@ public class NguPhap implements Serializable {
     private String luaChon2;
     private String luaChon3;
     private String luaChon4;
-    private int dapAn;
-    private int nguoiDungChonDapAn;
+    private String phanLoai;
+    private String dapAn;
+    private String nguoiDungChonDapAn;
 
     public NguPhap() {
     }
 
-
-    public NguPhap(String cauHoi, String luaChon1, String luaChon2, String luaChon3, String luaChon4, int dapAn) {
+    public NguPhap(String cauHoi, String luaChon1, String luaChon2, String luaChon3, String luaChon4, String phanLoai, String dapAn) {
         this.cauHoi = cauHoi;
         this.luaChon1 = luaChon1;
         this.luaChon2 = luaChon2;
         this.luaChon3 = luaChon3;
         this.luaChon4 = luaChon4;
+        this.phanLoai = phanLoai;
         this.dapAn = dapAn;
-        this.nguoiDungChonDapAn = 0;
+        this.nguoiDungChonDapAn = "";
     }
 
     public String getCauHoi() {
@@ -65,19 +66,27 @@ public class NguPhap implements Serializable {
         this.luaChon4 = luaChon4;
     }
 
-    public int getDapAn() {
+    public String getPhanLoai() {
+        return phanLoai;
+    }
+
+    public void setPhanLoai(String phanLoai) {
+        this.phanLoai = phanLoai;
+    }
+
+    public String getDapAn() {
         return dapAn;
     }
 
-    public void setDapAn(int dapAn) {
+    public void setDapAn(String dapAn) {
         this.dapAn = dapAn;
     }
 
-    public int getNguoiDungChonDapAn() {
+    public String getNguoiDungChonDapAn() {
         return nguoiDungChonDapAn;
     }
 
-    public void setNguoiDungChonDapAn(int nguoiDungChonDapAn) {
+    public void setNguoiDungChonDapAn(String nguoiDungChonDapAn) {
         this.nguoiDungChonDapAn = nguoiDungChonDapAn;
     }
 }

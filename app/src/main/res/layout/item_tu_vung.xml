@@ -30,6 +30,13 @@
             android:layout_below="@id/tvNghia"
             android:textColor="@color/black" />
 
+        <TextView
+            android:id="@+id/tvPhanLoai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAnh"
+            android:textColor="@color/black" />
+
         <ImageView
             android:id="@+id/ivXoa"
             android:layout_width="40dp"

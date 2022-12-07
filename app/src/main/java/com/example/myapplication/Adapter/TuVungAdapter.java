@@ -57,12 +57,15 @@ public class TuVungAdapter extends BaseAdapter {
         String tuVung = tuVungs.get(i).getTenTuVung();
         String nghia = tuVungs.get(i).getNghiaTuVung();
         String anh = tuVungs.get(i).getAnh();
+        String phanLoai = tuVungs.get(i).getPhanLoai();
         TextView tvTuVung = view.findViewById(R.id.tvTuVung);
         tvTuVung.setText("Từ vựng: "+tuVung);
         TextView tvNghia = view.findViewById(R.id.tvNghia);
         tvNghia.setText("Nghĩa: "+nghia);
         TextView tvAnh = view.findViewById(R.id.tvAnh);
         tvAnh.setText("Link ảnh: "+anh);
+        TextView tvPhanLoai = view.findViewById(R.id.tvPhanLoai);
+        tvPhanLoai.setText("Phân loại: "+phanLoai);
         ImageView ivXoa = view.findViewById(R.id.ivXoa);
         ImageView ivChinhSua = view.findViewById(R.id.ivChinhSua);
         ivXoa.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +100,11 @@ public class TuVungAdapter extends BaseAdapter {
                 EditText edTuVung = view1.findViewById(R.id.edTuVung);
                 EditText edNghia = view1.findViewById(R.id.edNghia);
                 EditText edLinkAnh = view1.findViewById(R.id.edLinkAnh);
+                EditText edPhanLoai = view1.findViewById(R.id.edPhanLoai);
                 edTuVung.setText(tuVung);
                 edNghia.setText(nghia);
                 edLinkAnh.setText(anh);
+                edPhanLoai.setText(phanLoai);
                 builder.setNegativeButton("Hủy",null);
                 builder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
                     @Override
@@ -112,7 +117,8 @@ public class TuVungAdapter extends BaseAdapter {
                                 String tuvung = edTuVung.getText().toString().trim();
                                 String nghia = edNghia.getText().toString().trim();
                                 String anh = edLinkAnh.getText().toString().trim();
-                                TuVung tuVung1 = new TuVung(tuvung,nghia,anh);
+                                String phanLoai = edPhanLoai.getText().toString().trim();
+                                TuVung tuVung1 = new TuVung(tuvung,nghia,anh,phanLoai);
                                 reference.child(tuvung).setValue(tuVung1, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {

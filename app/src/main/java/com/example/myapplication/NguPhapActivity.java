@@ -1,13 +1,17 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.DTO.NguPhap;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +33,14 @@ import java.util.ArrayList;
 public class NguPhapActivity extends AppCompatActivity {
     private RelativeLayout luaChon1,luaChon2,luaChon3,luaChon4;
     private TextView tvCauHoiHienTai,tvTongCauHoi,tvCauHoi,tvLuaChon1,tvLuaChon2,tvLuaChon3,tvLuaChon4;
-    private ImageView luaChon1Icon,luaChon2Icon,luaChon3Icon,luaChon4Icon;
+    private ImageView luaChon1Icon,luaChon2Icon,luaChon3Icon,luaChon4Icon,ivThoat;
     private Button btnKiemTra;
     private ArrayList<NguPhap> nguPhaps = new ArrayList<>();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference("DanhSachNguPhap");
     private int cauHoiHienTai = 0;
-    private int selectedLuaChon = 0;
+    private String selectedLuaChon = "";
+    MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +51,12 @@ public class NguPhapActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot cauHoi : snapshot.getChildren()){
                     NguPhap nguPhap = cauHoi.getValue(NguPhap.class);
-                    nguPhaps.add(nguPhap);
+                    Intent intent = NguPhapActivity.this.getIntent();
+                    String phanLoaiNguPhap = intent.getStringExtra("phanloai");
+                    if(nguPhap.getPhanLoai().equalsIgnoreCase(phanLoaiNguPhap)){
+                        nguPhaps.add(nguPhap);
+                    }
                 }
-                Log.d("list", "nguphap: "+nguPhaps.size());
                 tvTongCauHoi.setText("/"+nguPhaps.size());
                 selectCauHoi(cauHoiHienTai);
             }
@@ -57,15 +66,11 @@ public class NguPhapActivity extends AppCompatActivity {
                 Toast.makeText(NguPhapActivity.this, "Lấy dữ liệu không thành công", Toast.LENGTH_SHORT).show();
             }
         });
-        IDialog iDialog = new IDialog(NguPhapActivity.this);
-        iDialog.setCancelable(false);
-        iDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        iDialog.show();
         luaChon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnKiemTra.setEnabled(true);
-                selectedLuaChon = 1;
+                selectedLuaChon = nguPhaps.get(cauHoiHienTai).getLuaChon1();
                 selectedLuaChon(luaChon1,luaChon1Icon);
             }
         });
@@ -73,7 +78,7 @@ public class NguPhapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btnKiemTra.setEnabled(true);
-                selectedLuaChon = 2;
+                selectedLuaChon = nguPhaps.get(cauHoiHienTai).getLuaChon2();
                 selectedLuaChon(luaChon2,luaChon2Icon);
             }
         });
@@ -81,16 +86,15 @@ public class NguPhapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btnKiemTra.setEnabled(true);
-                selectedLuaChon = 3;
+                selectedLuaChon = nguPhaps.get(cauHoiHienTai).getLuaChon3();
                 selectedLuaChon(luaChon3,luaChon3Icon);
-
             }
         });
         luaChon4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnKiemTra.setEnabled(true);
-                selectedLuaChon = 4;
+                selectedLuaChon = nguPhaps.get(cauHoiHienTai).getLuaChon4();
                 selectedLuaChon(luaChon4,luaChon4Icon);
             }
         });
@@ -98,16 +102,79 @@ public class NguPhapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nguPhaps.get(cauHoiHienTai).setNguoiDungChonDapAn(selectedLuaChon);
-                selectedLuaChon = 0;
-                cauHoiHienTai++;
-                if(cauHoiHienTai<nguPhaps.size()){
-                    selectCauHoi(cauHoiHienTai);
-                }else {
-                    KetThucNguPhap();
+                String check = nguPhaps.get(cauHoiHienTai).getNguoiDungChonDapAn();
+                String dapAn = nguPhaps.get(cauHoiHienTai).getDapAn();
+                BottomSheetDialog dialog = new BottomSheetDialog(NguPhapActivity.this);
+                if(check.equalsIgnoreCase(dapAn)){
+                    View view1 = LayoutInflater.from(NguPhapActivity.this).inflate(R.layout.dung_bottomsheet, null);
+                    Button btnTiepTuc = view1.findViewById(R.id.btnTiepTuc);
+                    btnTiepTuc.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            player.stop();
+                            selectedLuaChon = "";
+                            cauHoiHienTai++;
+                            if(cauHoiHienTai<nguPhaps.size()){
+                                selectCauHoi(cauHoiHienTai);
+                            }else {
+                                KetThucNguPhap();
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.setContentView(view1);
+                    dialog.setCancelable(false);
+                    dialog.show();
+                    player = MediaPlayer.create(NguPhapActivity.this,R.raw.dung);
+                    player.start();
+                } else {
+                    View view1 = LayoutInflater.from(NguPhapActivity.this).inflate(R.layout.sai_bottomsheet, null);
+                    Button btnHieuRoi = view1.findViewById(R.id.btnHieuRoi);
+                    TextView tvDapAnDung = view1.findViewById(R.id.tvDapAnDung);
+                    tvDapAnDung.setText(nguPhaps.get(cauHoiHienTai).getDapAn());
+                    btnHieuRoi.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            player.stop();
+                            selectedLuaChon = "";
+                            cauHoiHienTai++;
+                            if(cauHoiHienTai<nguPhaps.size()){
+                                selectCauHoi(cauHoiHienTai);
+                            }else {
+                                KetThucNguPhap();
+                            }
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.setContentView(view1);
+                    dialog.setCancelable(false);
+                    dialog.show();
+                    player = MediaPlayer.create(NguPhapActivity.this,R.raw.sai);
+                    player.start();
                 }
             }
         });
-
+        ivThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(NguPhapActivity.this);
+                builder.setTitle("Bạn có muốn kết thúc bài học không?");
+                builder.setNegativeButton("Không",null);
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(NguPhapActivity.this,KetThucNguPhapActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("cauhoi",(Serializable) nguPhaps);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                builder.create();
+                builder.show();
+            }
+        });
     }
     private void KetThucNguPhap(){
         Intent intent = new Intent(NguPhapActivity.this,KetThucNguPhapActivity.class);
@@ -133,7 +200,30 @@ public class NguPhapActivity extends AppCompatActivity {
         luaChon2Icon = findViewById(R.id.luaChon2Icon);
         luaChon3Icon = findViewById(R.id.luaChon3Icon);
         luaChon4Icon = findViewById(R.id.luaChon4Icon);
+        ivThoat = findViewById(R.id.ivThoat);
         btnKiemTra = findViewById(R.id.btnKiemTra);
+        Intent intent = NguPhapActivity.this.getIntent();
+        String phanLoaiNguPhap = intent.getStringExtra("phanloai");
+        AlertDialog.Builder builder = new AlertDialog.Builder(NguPhapActivity.this);
+        View view = LayoutInflater.from(NguPhapActivity.this).inflate(R.layout.ngu_phap_dialog,null);
+        TextView tvHuongDan = view.findViewById(R.id.tvHuongDan);
+        builder.setView(view);
+        builder.setCancelable(false);
+        if(phanLoaiNguPhap.equalsIgnoreCase("thihientaidon")){
+            tvHuongDan.setText("thì hiện tại đơn");
+        }else if(phanLoaiNguPhap.equalsIgnoreCase("thihientaitiepdien")){
+            tvHuongDan.setText("thì hiện tại tiếp diễn");
+        }else {
+            tvHuongDan.setText("thì tương lai đơn");
+        }
+        builder.setPositiveButton("Hiểu rồi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
     private void selectCauHoi(int cauHoiPosition){
         resetLuaChon();
@@ -160,5 +250,25 @@ public class NguPhapActivity extends AppCompatActivity {
         resetLuaChon();
         ivIcon.setImageResource(R.drawable.ic_kiem_tra);
         LuaChon.setBackgroundResource(R.drawable.shape_lua_chon2);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(NguPhapActivity.this);
+        builder.setTitle("Bạn có muốn kết thúc bài học không?");
+        builder.setNegativeButton("Không",null);
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(NguPhapActivity.this,KetThucNguPhapActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cauhoi",(Serializable) nguPhaps);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.create();
+        builder.show();
     }
 }

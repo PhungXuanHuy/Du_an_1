@@ -97,21 +97,11 @@
 
         <Button
             android:id="@+id/btnTroLai"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
             android:background="@drawable/shape_button2"
             android:text="Trở lại"
             android:textAllCaps="false"
             android:textColor="@color/color_main" />
-
-        <Button
-            android:id="@+id/btnLamLai"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:background="@drawable/shape_button"
-            android:text="Làm lại"
-            android:textAllCaps="false" />
     </LinearLayout>
 </LinearLayout>

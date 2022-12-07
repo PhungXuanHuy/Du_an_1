@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
     android:orientation="vertical"
-    tools:context=".QuanLyActivity">
+    android:background="@color/gray"
+    tools:context=".DanhSachBaiHocTuVungActivity">
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -23,36 +23,27 @@
             android:src="@drawable/ic_trolai" />
 
         <TextView
-            android:id="@+id/tvQuanLy"
+            android:id="@+id/tvNguPhap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Quản lý"
+            android:text="Ngữ pháp"
             android:textColor="#818080"
             android:textSize="20dp" />
+
     </RelativeLayout>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/bg_app"
         android:padding="16dp"
         >
-        <Button
-            android:id="@+id/btnThemTuVung"
-            android:text="thêm từ vựng"
-            android:background="@drawable/shape_button2"
-            android:textColor="@color/color_main"
-            android:layout_marginBottom="8dp"
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnThemNguPhap"
-            android:text="thêm ngữ pháp"
-            android:background="@drawable/shape_button2"
-            android:textColor="@color/color_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/lvBaiHocTuVung"
+            />
+    </RelativeLayout>
 </LinearLayout>

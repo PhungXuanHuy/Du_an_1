@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,29 +29,23 @@ public class KetThucTuVungActivity extends AppCompatActivity {
     TextView tvSoCauDung,tvSoCauSai;
     Button btnTroLai,btnLamLai;
     private ArrayList<TuVung> tuVungs = new ArrayList<>();
+    MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ket_thuc_tu_vung);
         ivHinh = findViewById(R.id.ivHinh);
         btnTroLai = findViewById(R.id.btnTroLai);
-        btnLamLai = findViewById(R.id.btnLamLai);
         tvSoCauDung = findViewById(R.id.tvSoCauDung);
         tvSoCauSai = findViewById(R.id.tvSoCauSai);
         Glide.with(this).load("https://thumbs.gfycat.com/DismalWarmArmadillo-max-1mb.gif").into(ivHinh);
         tuVungs = (ArrayList<TuVung>) getIntent().getSerializableExtra("cauhoi");
         tvSoCauDung.setText(getSoCauDung()+"");
         tvSoCauSai.setText(String.valueOf(tuVungs.size()-getSoCauDung()));
-        btnLamLai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(KetThucTuVungActivity.this,TuVungActivity.class));
-                finish();
-            }
-        });
         btnTroLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                player.stop();
                 finish();
             }
         });
@@ -76,6 +71,8 @@ public class KetThucTuVungActivity extends AppCompatActivity {
 
             }
         });
+        player = MediaPlayer.create(KetThucTuVungActivity.this,R.raw.end);
+        player.start();
     }
     private int getSoCauDung(){
         int soCauDung = 0;
