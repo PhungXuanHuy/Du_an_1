@@ -41,13 +41,20 @@
         android:hint="Nghĩa"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
-
     <EditText
         android:id="@+id/edAnh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:hint="link ảnh"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+    <EditText
+        android:id="@+id/edPhanLoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:hint="Phân loại"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 </LinearLayout>

@@ -68,8 +68,11 @@ public class NguPhapAdapter extends BaseAdapter {
         String luaChon4 = nguPhaps.get(i).getLuaChon4();
         tvLuachon4.setText("Lựa chọn 4: "+luaChon4);
         TextView tvDapAn = view.findViewById(R.id.tvDapAn);
-        int dapAn = nguPhaps.get(i).getDapAn();
+        String dapAn = nguPhaps.get(i).getDapAn();
         tvDapAn.setText("Đáp án: "+dapAn);
+        TextView tvPhanLoai = view.findViewById(R.id.tvPhanLoai);
+        String phanLoai = nguPhaps.get(i).getPhanLoai();
+        tvPhanLoai.setText("Phân loại: "+phanLoai);
         ImageView ivXoa = view.findViewById(R.id.ivXoa);
         ivXoa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,13 +109,15 @@ public class NguPhapAdapter extends BaseAdapter {
                 EditText edLuaChon2 = view1.findViewById(R.id.edLuaChon2);
                 EditText edLuaChon3 = view1.findViewById(R.id.edLuaChon3);
                 EditText edLuaChon4 = view1.findViewById(R.id.edLuaChon4);
+                EditText edPhanLoai = view1.findViewById(R.id.edPhanLoai);
                 EditText edDapAn = view1.findViewById(R.id.edDapAn);
                 edCauHoi.setText(cauHoi);
                 edLuaChon1.setText(luaChon1);
                 edLuaChon2.setText(luaChon2);
                 edLuaChon3.setText(luaChon3);
                 edLuaChon4.setText(luaChon4);
-                edDapAn.setText(dapAn+"");
+                edPhanLoai.setText(phanLoai);
+                edDapAn.setText(dapAn);
                 builder.setNegativeButton("Hủy",null);
                 builder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
                     @Override
@@ -127,8 +132,9 @@ public class NguPhapAdapter extends BaseAdapter {
                                 String luaChon2 = edLuaChon2.getText().toString().trim();
                                 String luaChon3 = edLuaChon3.getText().toString().trim();
                                 String luaChon4 = edLuaChon4.getText().toString().trim();
-                                int dapAn = Integer.parseInt(edDapAn.getText().toString().trim());
-                                NguPhap nguPhap = new NguPhap(cauHoi1,luaChon1,luaChon2,luaChon3,luaChon4,dapAn);
+                                String phanLoai = edPhanLoai.getText().toString().trim();
+                                String dapAn = edDapAn.getText().toString().trim();
+                                NguPhap nguPhap = new NguPhap(cauHoi1,luaChon1,luaChon2,luaChon3,luaChon4,phanLoai,dapAn);
                                 reference.child(cauHoi1).setValue(nguPhap, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {

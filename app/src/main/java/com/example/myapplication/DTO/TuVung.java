@@ -7,14 +7,16 @@ public class TuVung implements Serializable {
     private String nghiaTuVung;
     private String dapAn;
     private String anh;
+    private String phanLoai;
 
     public TuVung() {
     }
 
-    public TuVung(String tenTuVung, String nghiaTuVung, String anh) {
+    public TuVung(String tenTuVung, String nghiaTuVung, String anh, String phanLoai) {
         this.tenTuVung = tenTuVung;
         this.nghiaTuVung = nghiaTuVung;
         this.anh = anh;
+        this.phanLoai = phanLoai;
         this.dapAn = "";
     }
 
@@ -48,5 +50,13 @@ public class TuVung implements Serializable {
 
     public void setAnh(String anh) {
         this.anh = anh;
+    }
+
+    public String getPhanLoai() {
+        return phanLoai;
+    }
+
+    public void setPhanLoai(String phanLoai) {
+        this.phanLoai = phanLoai;
     }
 }

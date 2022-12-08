@@ -57,6 +57,7 @@ public class ThemTuVungActivity extends AppCompatActivity {
                 EditText edTuVung = view1.findViewById(R.id.edTuVung);
                 EditText edNghia = view1.findViewById(R.id.edNghia);
                 EditText edAnh = view1.findViewById(R.id.edAnh);
+                EditText edPhanLoai = view1.findViewById(R.id.edPhanLoai);
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -69,7 +70,8 @@ public class ThemTuVungActivity extends AppCompatActivity {
                         String tuVung = edTuVung.getText().toString().trim();
                         String nghia = edNghia.getText().toString().trim();
                         String anh = edAnh.getText().toString().trim();
-                        TuVung tuVung1 = new TuVung(tuVung,nghia,anh);
+                        String phanLoai = edPhanLoai.getText().toString().trim();
+                        TuVung tuVung1 = new TuVung(tuVung,nghia,anh,phanLoai);
                         reference.child(tuVung).setValue(tuVung1);
                         Toast.makeText(ThemTuVungActivity.this, "Thêm ngữ pháp thành công!", Toast.LENGTH_SHORT).show();
                         reference.addListenerForSingleValueEvent(new ValueEventListener() {

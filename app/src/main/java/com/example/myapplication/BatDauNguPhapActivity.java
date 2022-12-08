@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +30,7 @@ public class BatDauNguPhapActivity extends AppCompatActivity {
         btnBatDau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BatDauNguPhapActivity.this,NguPhapActivity.class));
+                startActivity(new Intent(BatDauNguPhapActivity.this,DanhSachBaiHocNguPhapActivity.class));
             }
         });
     }

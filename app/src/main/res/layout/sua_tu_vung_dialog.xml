@@ -14,12 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nghĩa"
-        android:id="@+id/edNghia"
-        />
+        android:id="@+id/edNghia" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Link ảnh"
-        android:id="@+id/edLinkAnh"
-        />
+        android:id="@+id/edLinkAnh" />
+
+    <EditText
+        android:id="@+id/edPhanLoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phân loại" />
 </LinearLayout>

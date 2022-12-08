@@ -43,7 +43,7 @@
                 android:background="@drawable/shape_button"
                 android:paddingStart="50dp"
                 android:paddingEnd="50dp"
-                android:text="Tiếp tục"
+                android:text="Hiểu rồi"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
         </LinearLayout>

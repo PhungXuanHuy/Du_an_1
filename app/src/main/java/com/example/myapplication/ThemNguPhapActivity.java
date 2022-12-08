@@ -56,6 +56,7 @@ public class ThemNguPhapActivity extends AppCompatActivity {
                 EditText edLuaChon2 = view1.findViewById(R.id.edLuaChon2);
                 EditText edLuaChon3 = view1.findViewById(R.id.edLuaChon3);
                 EditText edLuaChon4 = view1.findViewById(R.id.edLuaChon4);
+                EditText edPhanLoai = view1.findViewById(R.id.edPhanLoai);
                 EditText edDapAn = view1.findViewById(R.id.edDapAn);
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
@@ -71,8 +72,9 @@ public class ThemNguPhapActivity extends AppCompatActivity {
                         String luaChon2 = edLuaChon2.getText().toString().trim();
                         String luaChon3 = edLuaChon3.getText().toString().trim();
                         String luaChon4 = edLuaChon4.getText().toString().trim();
-                        int dapAn = Integer.parseInt(edDapAn.getText().toString().trim());
-                        NguPhap nguPhap = new NguPhap(cauHoi,luaChon1,luaChon2,luaChon3,luaChon4,dapAn);
+                        String phanLoai = edPhanLoai.getText().toString().trim();
+                        String dapAn = edDapAn.getText().toString().trim();
+                        NguPhap nguPhap = new NguPhap(cauHoi,luaChon1,luaChon2,luaChon3,luaChon4,phanLoai,dapAn);
                         reference.child(cauHoi).setValue(nguPhap);
                         Toast.makeText(ThemNguPhapActivity.this, "Thêm ngữ pháp thành công!", Toast.LENGTH_SHORT).show();
                         reference.addListenerForSingleValueEvent(new ValueEventListener() {

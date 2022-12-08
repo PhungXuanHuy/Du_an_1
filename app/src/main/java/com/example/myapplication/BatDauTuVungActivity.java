@@ -24,7 +24,7 @@ public class BatDauTuVungActivity extends AppCompatActivity {
         btnBatDau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BatDauTuVungActivity.this,TuVungActivity.class));
+                startActivity(new Intent(BatDauTuVungActivity.this,DanhSachBaiHocTuVungActivity.class));
             }
         });
         btnVanChua.setOnClickListener(new View.OnClickListener() {

@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
                 int tongDiemFireBase = snapshot.child(tenDangNhap).child("tongDiem").getValue(Integer.class);
                 String linkAnhFireBase = snapshot.child(tenDangNhap).child("linkAnh").getValue(String.class);
                 tvTongdiem.setText(""+tongDiemFireBase);
-                Glide.with(getContext()).load(linkAnhFireBase).into(ivAvatar);
+                Glide.with(getActivity()).load(linkAnhFireBase).into(ivAvatar);
             }
 
             @Override
