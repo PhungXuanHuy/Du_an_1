@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AnhXa() {
-        navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.bottom_nav);
         homeFragment = new HomeFragment();
         xepHangFragment = new XepHangFragment();
         toiFragment = new ToiFragment();

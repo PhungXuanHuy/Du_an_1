@@ -26,10 +26,9 @@
             android:id="@+id/tvChinhSuaThongTin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:text="Chỉnh sửa thông tin"
-            android:textColor="#818080"
+            android:textColor="#ffff"
             android:textSize="20dp" />
     </RelativeLayout>
 
@@ -56,6 +55,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/shape_tendangnhap"
             android:hint="Link ảnh(PNG)"
+            android:textColorHint="@color/white"
             android:inputType="text"
             android:padding="16dp"
             android:textColor="@color/white" />
@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_dangky"
             android:hint="Họ tên"
+            android:textColorHint="@color/white"
             android:inputType="text"
             android:padding="16dp"
             android:textColor="@color/white" />
@@ -76,6 +77,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_dangky"
             android:hint="Mật khẩu"
+            android:textColorHint="@color/white"
             android:inputType="textPassword"
             android:padding="16dp"
             android:textColor="@color/white" />
@@ -86,6 +88,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_matkhau"
             android:hint="Nhập lại mật khẩu"
+            android:textColorHint="@color/white"
             android:inputType="textPassword"
             android:padding="16dp"
             android:textColor="@color/white" />
@@ -97,6 +100,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/shape_button"
             android:enabled="false"
+            android:textColor="@color/white"
             android:text="Sửa"
             android:textStyle="bold" />
     </LinearLayout>
