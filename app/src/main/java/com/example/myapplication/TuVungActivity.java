@@ -179,8 +179,8 @@ public class TuVungActivity extends AppCompatActivity {
         btnKiemTra.setText("Kiểm tra");
     }
 
-    private void KetThucTuVung() {
-        Intent intent = new Intent(TuVungActivity.this, KetThucTuVungActivity.class);
+    private void KetThucTuVung(){
+        Intent intent = new Intent(TuVungActivity.this,KetThucTuVungActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("cauhoi", (Serializable) tuVungs);
         intent.putExtras(bundle);
