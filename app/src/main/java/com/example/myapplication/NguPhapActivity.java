@@ -210,11 +210,54 @@ public class NguPhapActivity extends AppCompatActivity {
         builder.setView(view);
         builder.setCancelable(false);
         if(phanLoaiNguPhap.equalsIgnoreCase("thihientaidon")){
-            tvHuongDan.setText("thì hiện tại đơn");
+            tvHuongDan.setText("Công thức thì hiện tại đơn" +
+                    "\n Động từ tobe:" +
+                    "\n S + am/ is/ are+ N/ Adj\n" +
+                    "\n" +
+                    "- I + am\n" +
+                    "\n" +
+                    "- He/ She/ It/ Danh từ số ít/ Danh từ không đếm được + is\n" +
+                    "\n" +
+                    "- You/ We/ They/ Danh từ số nhiều + are" +
+                    "\n Động từ thường:" +
+                    "\n S + V(s/es)\n" +
+                    "\n" +
+                    "- I/ We/ You/ They/ Danh từ số nhiều + V(nguyên thể)\n" +
+                    "\n" +
+                    "- He/ She/ It/ Danh từ số ít/ Danh từ không đếm được + V(s/es)");
         }else if(phanLoaiNguPhap.equalsIgnoreCase("thihientaitiepdien")){
-            tvHuongDan.setText("thì hiện tại tiếp diễn");
+            tvHuongDan.setText("Công thức thì hiện tại tiếp diễn:" +
+                    "\n Câu khẳng định:" +
+                    "\n S + am/ is/ are + V-ing." +
+                    "\n Câu phủ định:" +
+                    "\n S + am/are/is + not + Ving" +
+                    "\n Câu nghi vấn:" +
+                    "\n  Q: Am/ Is/ Are + S + Ving?\n" +
+                    "\n" +
+                    " A: Yes, S + am/is/are.\n" +
+                    "\n" +
+                    "      No, S + am/is/are + not.");
         }else {
-            tvHuongDan.setText("thì tương lai đơn");
+            tvHuongDan.setText("Công thức thì tương lai đơn:" +
+                    "\n Câu khẳng định:" +
+                    "\n - Động từ tobe: S + will +  be + N/Adj" +
+                    "\n - Động từ thường: S + will +  V(nguyên thể)" +
+                    "\n Câu phủ định: " +
+                    "\n - Động từ tobe: S + will not + be + N/Adj" +
+                    "\n - Động từ thường: S + will not + V(nguyên thể)" +
+                    "\n Câu nghi vấn:" +
+                    "\n Động từ tobe: " +
+                    "\n Q: Will + S + be + ?\n" +
+                    "\n" +
+                    "A: Yes, S + will\n" +
+                    "\n" +
+                    "     No, S + won’t" +
+                    "\n Động từ thường:" +
+                    "\n Q: Will + S + V(nguyên thể)?\n" +
+                    "\n" +
+                    "A: Yes, S + will.\n" +
+                    "\n" +
+                    "      No, S + won’t.");
         }
         builder.setPositiveButton("Hiểu rồi", new DialogInterface.OnClickListener() {
             @Override
